@@ -17,6 +17,8 @@ console.log(o, typeof o, typeof o == 'object');
 
 let oi = {
   x: 10,
+  y: 20,
+  z: 30,
 };
 console.log(oi.x, typeof oi.x, typeof oi.x == 'number', oi['x']);
 
@@ -27,7 +29,6 @@ interface Point {
 }
 // obligation de donner une valeur à x et y, initialisation de p comme object.
 let p: Point = { x: 12, y: 20 };
-p.x = 14;
 console.log(p, typeof p, typeof o == 'object');
 
 type Animal = 'Singe' | 'Lion';
@@ -60,3 +61,46 @@ console.log(ti, typeof ti, typeof ti == 'object', ti.length, ti[1], ti[3]);
 // déclarer une array avec une syntaxe différente
 let tj: Array<number | string | object>;
 tj = [34, 'test', { z: 22 }];
+
+// Boucles
+
+for (const key in tj) {
+  console.log(key, tj[key]);
+}
+
+for (const key in p) {
+  console.log(key, p[key as keyof Point]);
+}
+
+for (const val of tj) {
+  console.log(val);
+}
+
+for (const c of 'maman') {
+  console.log(c);
+}
+
+// transform string to number
+
+let st: string = String(12);
+let sti: number = Number('10');
+
+//Functions
+function f1(p1: string | undefined = undefined, p3: any, p2 = 0, p4?: any) {
+  // p?: any optional parameter of any type
+  console.log(p1);
+}
+
+let r;
+// paramètres optionnels tout le temps à la fin des functions
+f1(r, oi);
+
+console.log(f1, typeof f1, typeof f1 == 'function');
+
+let f2 = function (...nums: number[]) {
+  nums.forEach((x) => console.log(x));
+};
+
+f2(2, 5, 6, 7);
+
+console.log(f2, typeof f2);
