@@ -22,6 +22,8 @@ let oi = {
 };
 console.log(oi.x, typeof oi.x, typeof oi.x == 'number', oi['x']);
 
+//*********************************************** */
+//*********************************************** */
 // interface sert à determiner la nature d'un object
 interface Point {
   x: number;
@@ -62,6 +64,8 @@ console.log(ti, typeof ti, typeof ti == 'object', ti.length, ti[1], ti[3]);
 let tj: Array<number | string | object>;
 tj = [34, 'test', { z: 22 }];
 
+//*********************************************** */
+//*********************************************** */
 // Boucles
 
 for (const key in tj) {
@@ -80,6 +84,8 @@ for (const c of 'maman') {
   console.log(c);
 }
 
+//*********************************************** */
+//*********************************************** */
 // transform string to number
 
 let st: string = String(12);
@@ -149,6 +155,8 @@ let oif = {
 oif.x = 100;
 oif.f();
 
+//*********************************************** */
+//*********************************************** */
 // Interface est un modèle pour fabriquer un object
 interface Coordonnes {
   lat: number; // readonly ==>
@@ -167,14 +175,22 @@ let coor: Coordonnes = {
 
 coor.dessine();
 
-class Coordinates {
-  // lat: number;
-  // long: number;
-  // constructor(public lat: number, public long: number) {
-  //   this.lat = lat;
-  //   this.long = long;
-  // }
+//*********************************************** */
+//*********************************************** */
+// interface pour une Classe
 
+interface Dessinable {
+  dessine: () => void;
+}
+
+interface Visitable {
+  visiter: () => void;
+}
+
+//*********************************************** */
+//*********************************************** */
+// Classe
+class Coordinates implements Dessinable {
   private _lat: number = 0;
   private _lg: number = 0;
 
@@ -192,7 +208,7 @@ class Coordinates {
     return this._lg;
   }
 
-  // setter
+  // setter lattitude
   set lat(_lat: number) {
     if (_lat >= -90 && _lat <= 90) {
       this._lat = _lat;
@@ -201,6 +217,7 @@ class Coordinates {
     }
   }
 
+  // setter longitude
   set lg(_lg: number) {
     if (_lg >= -180 && _lg <= 180) {
       this._lg = _lg;
@@ -212,10 +229,45 @@ class Coordinates {
   // function to print lat and lg
 
   dessine() {
-    console.log(`latitude: ${this._lat}, ${this._lg}`);
+    console.log(`latitude: ${this.lat}, longitude: ${this.lg}`);
   }
 }
 
 let jetdeau = new Coordinates(-121212112, 34);
 console.log(jetdeau.lat);
 jetdeau.dessine();
+
+class Coordinates3D extends Coordinates implements Visitable {
+  private _alt: number = 0;
+
+  constructor(lat: number, lg: number, alt: number) {
+    super(lat, lg);
+    this.alt = alt; // appel setter
+  }
+  visiter() {
+    console.log('Je visite un point 3D');
+  }
+
+  // getter
+  get alt() {
+    return this._alt;
+  }
+
+  // setter altitude
+  set alt(_alt: number) {
+    if (_alt >= -11000 && _alt <= 12000) {
+      this._alt = _alt;
+    } else {
+      console.log('altitude invalide');
+    }
+  }
+
+  dessine() {
+    console.log(
+      `latitude: ${this.lat}, longitude: ${this.lg} altitude: ${this.alt}`
+    );
+  }
+}
+
+let jetdeau3d = new Coordinates3D(-55, 67, 450);
+jetdeau3d.dessine();
