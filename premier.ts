@@ -168,17 +168,54 @@ let coor: Coordonnes = {
 coor.dessine();
 
 class Coordinates {
-  lat: number;
-  long: number;
-  constructor(lat: number, long: number) {
-    this.lat = lat;
-    this.long = long;
+  // lat: number;
+  // long: number;
+  // constructor(public lat: number, public long: number) {
+  //   this.lat = lat;
+  //   this.long = long;
+  // }
+
+  private _lat: number = 0;
+  private _lg: number = 0;
+
+  constructor(lat: number, lg: number) {
+    this.lat = lat; // appel setter
+    this.lg = lg; // appel setter
   }
 
+  // getter
+  get lat() {
+    return this._lat;
+  }
+
+  get lg() {
+    return this._lg;
+  }
+
+  // setter
+  set lat(_lat: number) {
+    if (_lat >= -90 && _lat <= 90) {
+      this._lat = _lat;
+    } else {
+      console.log('latitude invalide');
+    }
+  }
+
+  set lg(_lg: number) {
+    if (_lg >= -180 && _lg <= 180) {
+      this._lg = _lg;
+    } else {
+      console.log('longitude invalide');
+    }
+  }
+
+  // function to print lat and lg
+
   dessine() {
-    console.log(`latitude: ${this.lat}, ${this.long}`);
+    console.log(`latitude: ${this._lat}, ${this._lg}`);
   }
 }
 
-let jetdeau = new Coordinates(12, 34);
+let jetdeau = new Coordinates(-121212112, 34);
+console.log(jetdeau.lat);
 jetdeau.dessine();
