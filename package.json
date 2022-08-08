@@ -1,0 +1,12 @@
+{
+  "name": "itta",
+  "version": "1.0.0",
+  "description": "Cours ITTA",
+  "main": "premier.js",
+  "scripts": {
+    "test": "ts-node premier.ts",
+    "compile": "tsc"
+  },
+  "author": "Felipe Barcon",
+  "license": "ISC"
+}
