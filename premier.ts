@@ -104,3 +104,81 @@ let f2 = function (...nums: number[]) {
 f2(2, 5, 6, 7);
 
 console.log(f2, typeof f2);
+
+let ta = [10];
+let tb = ta;
+ta[0]++;
+console.log(tb); //11 ==> ta et tb sont le même object si ta change tb change
+
+function test(tc: number[]) {
+  tc[0]++;
+}
+test(tb);
+console.log(tb); //12
+
+let td = 10;
+function test2() {
+  td++;
+}
+test2();
+console.log(td); // 11
+
+function test3(tc: number): number {
+  // parametre = variable locale
+  return tc + 1;
+}
+td = test3(td);
+console.log(td); //11
+
+// v++ <=> ++v post-increment <=> pre-increment
+
+td = 100;
+console.log(td++); //100
+console.log(++td); // 102
+console.log(td); // 102
+
+let oif = {
+  x: 10,
+  y: 20,
+  z: 30,
+  f: function () {
+    console.log(oif.x + oif.y + oif.z);
+  },
+};
+
+oif.x = 100;
+oif.f();
+
+// Interface est un modèle pour fabriquer un object
+interface Coordonnes {
+  lat: number; // readonly ==>
+  long: number;
+  // interface function doit être une arrow function
+  dessine: () => void; // contrat
+}
+
+let coor: Coordonnes = {
+  lat: 1234,
+  long: 4567,
+  dessine: function () {
+    console.log(coor.lat, coor.long);
+  },
+};
+
+coor.dessine();
+
+class Coordinates {
+  lat: number;
+  long: number;
+  constructor(lat: number, long: number) {
+    this.lat = lat;
+    this.long = long;
+  }
+
+  dessine() {
+    console.log(`latitude: ${this.lat}, ${this.long}`);
+  }
+}
+
+let jetdeau = new Coordinates(12, 34);
+jetdeau.dessine();
