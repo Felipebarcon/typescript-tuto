@@ -19,3 +19,8 @@ console.log(oi.x, typeof oi.x, typeof oi.x == 'number', oi['x']);
 let p = { x: 12, y: 20 };
 p.x = 14;
 console.log(p, typeof p, typeof o == 'object');
+// Declaration
+let a;
+// Affectation
+a = 'Singe';
+console.log(typeof a);
