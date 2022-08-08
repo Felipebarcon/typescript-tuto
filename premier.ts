@@ -189,7 +189,7 @@ interface Visitable {
 
 //*********************************************** */
 //*********************************************** */
-// Classe
+// Classes
 class Coordinates implements Dessinable {
   private _lat: number = 0;
   private _lg: number = 0;
@@ -199,7 +199,7 @@ class Coordinates implements Dessinable {
     this.lg = lg; // appel setter
   }
 
-  // getter
+  // Getter
   get lat() {
     return this._lat;
   }
@@ -208,7 +208,7 @@ class Coordinates implements Dessinable {
     return this._lg;
   }
 
-  // setter lattitude
+  // Setter lattitude
   set lat(_lat: number) {
     if (_lat >= -90 && _lat <= 90) {
       this._lat = _lat;
@@ -217,7 +217,7 @@ class Coordinates implements Dessinable {
     }
   }
 
-  // setter longitude
+  // Setter longitude
   set lg(_lg: number) {
     if (_lg >= -180 && _lg <= 180) {
       this._lg = _lg;
@@ -226,7 +226,7 @@ class Coordinates implements Dessinable {
     }
   }
 
-  // function to print lat and lg
+  // Function to print lat and lg
 
   dessine() {
     console.log(`latitude: ${this.lat}, longitude: ${this.lg}`);
