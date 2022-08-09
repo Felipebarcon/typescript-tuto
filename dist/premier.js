@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const coordinates_1 = require("./coordinates");
 const coordinates3d_1 = require("./coordinates3d");
+// import { default as Coord3d }  from './coordinates3d';
 let i = 10;
 const j = 100;
 console.log(i + j, typeof i);
@@ -134,14 +135,14 @@ console.log(ii.constructor.name, ''.constructor.name, {}.constructor.name, true.
 let jetdeau = new coordinates_1.Coordinates(-121212112, 34);
 console.log(jetdeau.lat);
 jetdeau.dessine();
-let jetdeau3d = new coordinates3d_1.Coordinates3D(-55, 67, 450);
+let jetdeau3d = new coordinates3d_1.Coordinates3d(-55, 67, 450);
 jetdeau3d.dessine();
-console.log(jetdeau3d, typeof jetdeau3d, typeof jetdeau3d == 'object', jetdeau3d.constructor.name);
+console.log(jetdeau3d, typeof jetdeau3d, typeof jetdeau3d == 'object', jetdeau3d.constructor.name, jetdeau3d instanceof coordinates3d_1.Coordinates3d, jetdeau3d instanceof coordinates_1.Coordinates, jetdeau3d instanceof Object);
 coordinates_1.Coordinates.bouge(jetdeau, 1, 2);
 jetdeau.dessine();
 coordinates_1.Coordinates.bouge(jetdeau3d, 1, 2);
 jetdeau3d.dessine();
-coordinates3d_1.Coordinates3D.bouge3d(jetdeau3d, 1, 2, 100);
+coordinates3d_1.Coordinates3d.bouge3d(jetdeau3d, 1, 2, 100);
 jetdeau3d.dessine();
 //*********************************************** */
 //*********************************************** */

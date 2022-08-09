@@ -4,7 +4,7 @@
   "description": "Cours ITTA",
   "main": "premier.js",
   "scripts": {
-    "test": "ts-node second.ts",
+    "test": "ts-node third.ts",
     "compile": "tsc"
   },
   "author": "Felipe Barcon",

@@ -1,5 +1,6 @@
 import Coordinates3d from './coordinates3d';
 import { Coordinates, Dessinable } from './coordinates';
+
 //**************************************** */
 //**************************************** */
 // Types Génériques
@@ -64,6 +65,7 @@ class Collection<T, U, D extends Dessinable> {
     this.dessin.dessine();
     return this.population[0];
   }
+
   getLast(): T {
     this.dessin.dessine();
     return this.population[this.population.length - 1];

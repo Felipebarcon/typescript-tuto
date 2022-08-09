@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Coordinates3D = void 0;
+exports.Coordinates3d = void 0;
 const coordinates_1 = require("./coordinates");
-class Coordinates3D extends coordinates_1.Coordinates {
+class Coordinates3d extends coordinates_1.Coordinates {
     constructor(lat, lg, alt) {
         super(lat, lg);
         this._alt = 0;
@@ -36,10 +36,10 @@ class Coordinates3D extends coordinates_1.Coordinates {
         c.alt += z;
     }
 }
-exports.Coordinates3D = Coordinates3D;
-Coordinates3D.MaxAlt = 12000;
-Coordinates3D.MinAlt = -12000;
-Coordinates3D.prototype.dessine = function () {
+exports.Coordinates3d = Coordinates3d;
+Coordinates3d.MaxAlt = 12000;
+Coordinates3d.MinAlt = -12000;
+Coordinates3d.prototype.dessine = function () {
     console.log(`latitude: ${this.lat}, longitude: ${this.lg} altitude: ${this.alt}`);
 };
-exports.default = Coordinates3D;
+exports.default = Coordinates3d;
