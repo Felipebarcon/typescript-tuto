@@ -1,0 +1,64 @@
+import Coordinates3d from './coordinates3d';
+import { Coordinates, Dessinable } from './coordinates';
+//**************************************** */
+//**************************************** */
+// Types Génériques
+
+let a: Array<number>; // array de number
+let b: number[];
+a = b = [1, 2, 3];
+
+// function return random number from array
+function getRandomArry(arr: any[]): any {
+  let a = Math.floor(Math.random() * arr.length);
+  return arr[a];
+}
+
+console.log(getRandomArry([1, 'a', true]));
+
+// Assume that the type of the parameter is unknown
+function getRandomArryGen<T>(arr: T[]): T {
+  let a = Math.floor(Math.random() * arr.length);
+  return arr[a];
+}
+
+let arry: Dessinable[] = [new Coordinates3d(1, 2, 3), new Coordinates(8, 9)];
+
+let arry2 = getRandomArryGen<Dessinable>(arry);
+
+for (const dessin of arry) {
+  dessin.dessine();
+  // Tester si dessin est un objet de type Dessinable
+  if (dessin instanceof Coordinates) {
+    console.log('latitude:', dessin.lat, 'longitude :', dessin.lg);
+  }
+  if (dessin instanceof Coordinates3d) {
+    console.log(
+      'latitude:',
+      dessin.lat,
+      'longitude :',
+      dessin.lg,
+      'altitude :',
+      dessin.alt
+    );
+  }
+}
+
+//**************************************** */
+//**************************************** */
+// Genercics classes
+
+class Collection<T> {
+  population: T[] = [];
+
+  getFirst(): T {
+    return this.population[0];
+  }
+  getLast(): T {
+    return this.population[-1];
+  }
+
+  add(element: T) {
+    this.population.push(element);
+  }
+}

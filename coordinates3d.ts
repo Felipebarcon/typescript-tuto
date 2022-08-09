@@ -1,6 +1,6 @@
 import { Coordinates, Visitable, Dessinable } from './coordinates';
 
-export class Coordinates3D
+export class Coordinates3d
   extends Coordinates
   implements Visitable, Dessinable
 {
@@ -39,17 +39,17 @@ export class Coordinates3D
   }
 
   // static methode de classe
-  static bouge3d(c: Coordinates3D, x: number, y: number, z: number) {
+  static bouge3d(c: Coordinates3d, x: number, y: number, z: number) {
     c.lat += x;
     c.lg += y;
     c.alt += z;
   }
 }
 
-Coordinates3D.prototype.dessine = function () {
+Coordinates3d.prototype.dessine = function () {
   console.log(
     `latitude: ${this.lat}, longitude: ${this.lg} altitude: ${this.alt}`
   );
 };
 
-export default Coordinates3D;
+export default Coordinates3d;

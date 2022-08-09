@@ -1,5 +1,6 @@
-import { Coordinates } from './coordinates';
-import Coordinates3D from './coordinates3d';
+import { Coordinates as Coord } from './coordinates';
+import { Coordinates3d as Coord3d } from './coordinates3d';
+// import { default as Coord3d }  from './coordinates3d';
 
 let i = 10;
 const j = 100;
@@ -192,26 +193,29 @@ console.log(
   f1.constructor.name
 );
 
-let jetdeau = new Coordinates(-121212112, 34);
+let jetdeau = new Coord(-121212112, 34);
 console.log(jetdeau.lat);
 jetdeau.dessine();
 
-let jetdeau3d = new Coordinates3D(-55, 67, 450);
+let jetdeau3d = new Coord3d(-55, 67, 450);
 jetdeau3d.dessine();
 
 console.log(
   jetdeau3d,
   typeof jetdeau3d,
   typeof jetdeau3d == 'object',
-  jetdeau3d.constructor.name
+  jetdeau3d.constructor.name,
+  jetdeau3d instanceof Coord3d,
+  jetdeau3d instanceof Coord,
+  jetdeau3d instanceof Object
 );
 
-Coordinates.bouge(jetdeau, 1, 2);
+Coord.bouge(jetdeau, 1, 2);
 jetdeau.dessine();
-Coordinates.bouge(jetdeau3d, 1, 2);
+Coord.bouge(jetdeau3d, 1, 2);
 jetdeau3d.dessine();
 
-Coordinates3D.bouge3d(jetdeau3d, 1, 2, 100);
+Coord3d.bouge3d(jetdeau3d, 1, 2, 100);
 jetdeau3d.dessine();
 
 //*********************************************** */
