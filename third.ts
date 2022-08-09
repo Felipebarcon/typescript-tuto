@@ -24,10 +24,53 @@ const deco2 = (appel: boolean = true) => {
   };
 };
 
+// const autorises = ['felipe', 'pierre'];
+
+// const nomsAutorises = (target: any, name: string) => {
+//   let courant: string = target[name];
+
+//   Object.defineProperty(target, name, {
+//     set: (nouveau: string) => {
+//       if (autorises.includes(nouveau)) {
+//         courant = nouveau;
+//         console.log('courant', courant, ', nouveau', nouveau);
+//       } else return;
+//     },
+//     get: () => courant,
+//   });
+// };
+
+const nomsAutorises = (...autorises: string[]) => {
+  if (autorises.length == 0) {
+    autorises.push('felipe', 'pierre');
+  }
+  // const autorises = ['felipe', 'pierre'];
+  return (target: any, name: string) => {
+    let courant: string = target[name];
+
+    Object.defineProperty(target, name, {
+      set: (nouveau: string) => {
+        if (autorises.includes(nouveau)) {
+          courant = nouveau;
+          console.log('courant', courant, ', nouveau', nouveau);
+        } else return;
+      },
+      get: () => courant.toUpperCase(),
+    });
+  };
+};
+
 class Bidon {
   @deco1(true) // utilisation du decorateur 1
   @deco2() // utilisation du decorateur 2
   test(): void {
     console.log('test est appelé');
   }
+
+  @nomsAutorises('paul', 'henri', 'felipe')
+  nom: string = 'felipe';
 }
+
+let b = new Bidon();
+b.nom = 'alexis';
+console.log(b.nom);
