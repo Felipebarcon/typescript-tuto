@@ -53,7 +53,7 @@ const nomsAutorises = (...autorises: string[]) => {
         if (autorises.includes(nouveau)) {
           courant = nouveau;
           console.log('courant', courant, ', nouveau', nouveau);
-        } else return;
+        } else throw nouveau + " n'est pas autorisé";
       },
       get: () => courant.toUpperCase(),
     });
@@ -71,6 +71,12 @@ class Bidon {
   nom: string = 'felipe';
 }
 
-let b = new Bidon();
-b.nom = 'alexis';
-console.log(b.nom);
+try {
+  const bidon = new Bidon();
+  bidon.nom = 'alexis';
+  console.log(bidon.nom);
+} catch (error) {
+  console.error(error);
+}
+
+console.log('---------------suite-------------');

@@ -55,7 +55,7 @@ const nomsAutorises = (...autorises) => {
                     console.log('courant', courant, ', nouveau', nouveau);
                 }
                 else
-                    return;
+                    throw nouveau + " n'est pas autorisé";
             },
             get: () => courant.toUpperCase(),
         });
@@ -82,6 +82,12 @@ __decorate([
     nomsAutorises('paul', 'henri', 'felipe'),
     __metadata("design:type", String)
 ], Bidon.prototype, "nom", void 0);
-let b = new Bidon();
-b.nom = 'alexis';
-console.log(b.nom);
+try {
+    const bidon = new Bidon();
+    bidon.nom = 'alexis';
+    console.log(bidon.nom);
+}
+catch (error) {
+    console.error(error);
+}
+console.log('---------------suite-------------');
