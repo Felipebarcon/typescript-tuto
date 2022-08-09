@@ -1,4 +1,7 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const coordinates_1 = require("./coordinates");
+const coordinates3d_1 = require("./coordinates3d");
 let i = 10;
 const j = 100;
 console.log(i + j, typeof i);
@@ -46,6 +49,8 @@ console.log(ti, typeof ti, typeof ti == 'object', ti.length, ti[1], ti[3]);
 // déclarer une array avec une syntaxe différente
 let tj;
 tj = [34, 'test', { z: 22 }];
+//*********************************************** */
+//*********************************************** */
 // Boucles
 for (const key in tj) {
     console.log(key, tj[key]);
@@ -59,6 +64,8 @@ for (const val of tj) {
 for (const c of 'maman') {
     console.log(c);
 }
+//*********************************************** */
+//*********************************************** */
 // transform string to number
 let st = String(12);
 let sti = Number('10');
@@ -120,48 +127,21 @@ let coor = {
     },
 };
 coor.dessine();
-class Coordinates {
-    constructor(lat, lg) {
-        // lat: number;
-        // long: number;
-        // constructor(public lat: number, public long: number) {
-        //   this.lat = lat;
-        //   this.long = long;
-        // }
-        this._lat = 0;
-        this._lg = 0;
-        this.lat = lat; // appel setter
-        this.lg = lg; // appel setter
-    }
-    // getter
-    get lat() {
-        return this._lat;
-    }
-    get lg() {
-        return this._lg;
-    }
-    // setter
-    set lat(_lat) {
-        if (_lat >= -90 && _lat <= 90) {
-            this._lat = _lat;
-        }
-        else {
-            console.log('latitude invalide');
-        }
-    }
-    set lg(_lg) {
-        if (_lg >= -180 && _lg <= 180) {
-            this._lg = _lg;
-        }
-        else {
-            console.log('longitude invalide');
-        }
-    }
-    // function to print lat and lg
-    dessine() {
-        console.log(`latitude: ${this._lat}, ${this._lg}`);
-    }
-}
-let jetdeau = new Coordinates(-121212112, 34);
+//*********************************************** */
+//*********************************************** */
+let ii = 12;
+console.log(ii.constructor.name, ''.constructor.name, {}.constructor.name, true.constructor.name, [].constructor.name, f1.constructor.name);
+let jetdeau = new coordinates_1.Coordinates(-121212112, 34);
 console.log(jetdeau.lat);
 jetdeau.dessine();
+let jetdeau3d = new coordinates3d_1.Coordinates3D(-55, 67, 450);
+jetdeau3d.dessine();
+console.log(jetdeau3d, typeof jetdeau3d, typeof jetdeau3d == 'object', jetdeau3d.constructor.name);
+coordinates_1.Coordinates.bouge(jetdeau, 1, 2);
+jetdeau.dessine();
+coordinates_1.Coordinates.bouge(jetdeau3d, 1, 2);
+jetdeau3d.dessine();
+coordinates3d_1.Coordinates3D.bouge3d(jetdeau3d, 1, 2, 100);
+jetdeau3d.dessine();
+//*********************************************** */
+//*********************************************** */

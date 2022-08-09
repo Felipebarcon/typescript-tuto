@@ -1,3 +1,6 @@
+import { Coordinates } from './coordinates';
+import Coordinates3D from './coordinates3d';
+
 let i = 10;
 const j = 100;
 console.log(i + j, typeof i);
@@ -24,7 +27,7 @@ console.log(oi.x, typeof oi.x, typeof oi.x == 'number', oi['x']);
 
 //*********************************************** */
 //*********************************************** */
-// interface sert à determiner la nature d'un object
+// Interface sert à determiner la nature d'un object */
 interface Point {
   x: number;
   y: number;
@@ -177,97 +180,39 @@ coor.dessine();
 
 //*********************************************** */
 //*********************************************** */
-// interface pour une Classe
 
-interface Dessinable {
-  dessine: () => void;
-}
+let ii = 12;
 
-interface Visitable {
-  visiter: () => void;
-}
-
-//*********************************************** */
-//*********************************************** */
-// Classes
-class Coordinates implements Dessinable {
-  private _lat: number = 0;
-  private _lg: number = 0;
-
-  constructor(lat: number, lg: number) {
-    this.lat = lat; // appel setter
-    this.lg = lg; // appel setter
-  }
-
-  // Getter
-  get lat() {
-    return this._lat;
-  }
-
-  get lg() {
-    return this._lg;
-  }
-
-  // Setter lattitude
-  set lat(_lat: number) {
-    if (_lat >= -90 && _lat <= 90) {
-      this._lat = _lat;
-    } else {
-      console.log('latitude invalide');
-    }
-  }
-
-  // Setter longitude
-  set lg(_lg: number) {
-    if (_lg >= -180 && _lg <= 180) {
-      this._lg = _lg;
-    } else {
-      console.log('longitude invalide');
-    }
-  }
-
-  // Function to print lat and lg
-
-  dessine() {
-    console.log(`latitude: ${this.lat}, longitude: ${this.lg}`);
-  }
-}
+console.log(
+  ii.constructor.name,
+  ''.constructor.name,
+  {}.constructor.name,
+  true.constructor.name,
+  [].constructor.name,
+  f1.constructor.name
+);
 
 let jetdeau = new Coordinates(-121212112, 34);
 console.log(jetdeau.lat);
 jetdeau.dessine();
 
-class Coordinates3D extends Coordinates implements Visitable {
-  private _alt: number = 0;
-
-  constructor(lat: number, lg: number, alt: number) {
-    super(lat, lg);
-    this.alt = alt; // appel setter
-  }
-  visiter() {
-    console.log('Je visite un point 3D');
-  }
-
-  // getter
-  get alt() {
-    return this._alt;
-  }
-
-  // setter altitude
-  set alt(_alt: number) {
-    if (_alt >= -11000 && _alt <= 12000) {
-      this._alt = _alt;
-    } else {
-      console.log('altitude invalide');
-    }
-  }
-
-  dessine() {
-    console.log(
-      `latitude: ${this.lat}, longitude: ${this.lg} altitude: ${this.alt}`
-    );
-  }
-}
-
 let jetdeau3d = new Coordinates3D(-55, 67, 450);
 jetdeau3d.dessine();
+
+console.log(
+  jetdeau3d,
+  typeof jetdeau3d,
+  typeof jetdeau3d == 'object',
+  jetdeau3d.constructor.name
+);
+
+Coordinates.bouge(jetdeau, 1, 2);
+jetdeau.dessine();
+Coordinates.bouge(jetdeau3d, 1, 2);
+jetdeau3d.dessine();
+
+Coordinates3D.bouge3d(jetdeau3d, 1, 2, 100);
+jetdeau3d.dessine();
+
+//*********************************************** */
+//*********************************************** */
