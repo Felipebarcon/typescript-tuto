@@ -93,3 +93,54 @@ catch (error) {
     console.error(error);
 }
 console.log('---------------suite-------------');
+//*********************************************** */
+//*********************************************** */
+// Function for exception
+class DivisionError extends Error {
+    constructor() {
+        super('division impossible par 0');
+    }
+}
+class ArrayError extends Error {
+    constructor() {
+        super('Tableau vide.... sans doute');
+    }
+}
+function division(a, ...b) {
+    if (b.length == 0) {
+        throw new ArrayError();
+    }
+    if (b[0] === 0) {
+        // throw new Error('Division par 0 pas autorisée');
+        throw new DivisionError();
+    }
+    return a / b[0];
+}
+try {
+    console.log(division(1, 1));
+}
+catch (error) {
+    if (error instanceof DivisionError) {
+        console.error('Apprend à calculer: ', error.message);
+    }
+}
+finally {
+    console.log('---------------fin de division-------------');
+}
+try {
+    console.log(division(1));
+    console.log('---------------fin de division-------------');
+}
+catch (error) {
+    if (error instanceof DivisionError) {
+        console.error('Apprend à calculer: ', error.message);
+    }
+    else {
+        if (error instanceof ArrayError) {
+            console.error('On doit diviser par quelque chose: ', error.message);
+        }
+    }
+}
+finally {
+    console.log('---------------fin de division-------------');
+}
