@@ -48,17 +48,31 @@ for (const dessin of arry) {
 //**************************************** */
 // Genercics classes
 
-class Collection<T> {
+class Collection<T, U, D extends Dessinable> {
+  u: U;
+  dessin: D;
   population: T[] = [];
 
+  constructor(u: U, dessin: D, ...population: T[]) {
+    // ... utiliser pour récupérer les arguments optionnels passés en paramètre
+    this.population = population; // population est un tableau de type T
+    this.u = u;
+    this.dessin = dessin;
+  }
+
   getFirst(): T {
+    this.dessin.dessine();
     return this.population[0];
   }
   getLast(): T {
-    return this.population[-1];
+    this.dessin.dessine();
+    return this.population[this.population.length - 1];
   }
 
   add(element: T) {
     this.population.push(element);
   }
 }
+
+let coll = new Collection('toto', new Coordinates(2, 4), 3, 6, 7, 8, 9);
+coll.add(12);
