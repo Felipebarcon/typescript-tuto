@@ -28,19 +28,13 @@ const deco2 = (appel = true) => {
         }
     };
 };
-// const autorises = ['felipe', 'pierre'];
-// const nomsAutorises = (target: any, name: string) => {
-//   let courant: string = target[name];
-//   Object.defineProperty(target, name, {
-//     set: (nouveau: string) => {
-//       if (autorises.includes(nouveau)) {
-//         courant = nouveau;
-//         console.log('courant', courant, ', nouveau', nouveau);
-//       } else return;
-//     },
-//     get: () => courant,
-//   });
-// };
+/**
+ *  - Valide la propriété avec une liste de noms autorisés ou custom
+ *  - Récupère la valeur de la propriété
+ *  - Si la valeur est dans la liste, la garde
+ *  - Si la valeur n'est pas dans la liste, la supprime
+ *    @param autorises - liste de valeurs autorisées
+ */
 const nomsAutorises = (...autorises) => {
     if (autorises.length == 0) {
         autorises.push('felipe', 'pierre');
@@ -62,7 +56,14 @@ const nomsAutorises = (...autorises) => {
     };
 };
 class Bidon {
-    constructor() {
+    /**
+     * Classe Bidon
+     * @param bidon - paramètre de la classe
+     *
+     * @author Felipe
+     * @beta
+     */
+    constructor(bidon = '') {
         this.nom = 'felipe';
     }
     test() {
@@ -84,6 +85,7 @@ __decorate([
 ], Bidon.prototype, "nom", void 0);
 try {
     const bidon = new Bidon();
+    bidon.test();
     bidon.nom = 'alexis';
     console.log(bidon.nom);
 }
